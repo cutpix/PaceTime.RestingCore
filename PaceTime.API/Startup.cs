@@ -37,7 +37,7 @@ namespace PaceTime.API
             services.AddMvc();
 
 
-            var connectionString = Configuration["ConnectionStrings:KnowledgeConnection"];
+            var connectionString = Configuration["ConnectionStrings:Development"];
             services.AddDbContext<KnowledgeContext>(x => x.UseSqlServer(connectionString));
 
             services.AddScoped<IBookRepository, BookRepository>();

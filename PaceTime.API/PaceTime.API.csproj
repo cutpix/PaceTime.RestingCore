@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PaceTime.Data.Core\PaceTime.Data.Core.csproj" />
+    <ProjectReference Include="..\PaceTime.Domain.Interfaces\PaceTime.Domain.Interfaces.csproj" />
+    <ProjectReference Include="..\PaceTime.Domain.Models\PaceTime.Domain.Models.csproj" />
+  </ItemGroup>
+
+</Project>

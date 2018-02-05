@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace PaceTime.API.Controllers
 {
+    [Route("api/books")]
     public class BooksController : Controller
     {
         private readonly IBookRepository _booksRepository;
@@ -16,6 +17,7 @@ namespace PaceTime.API.Controllers
             this._booksRepository = booksRepository;
         }
 
+        [HttpGet]
         public IActionResult GetBooks()
         {
             var booksFromRepo = _booksRepository.GetBooks();

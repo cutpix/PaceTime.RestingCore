@@ -13,9 +13,9 @@ namespace PaceTime.API.Controllers
     [Route("api/authors")]
     public class AuthorsController : Controller
     {
-        private readonly IBookRepository _bookRepository;
+        private readonly ILibraryRepository _bookRepository;
 
-        public AuthorsController(IBookRepository bookRepository)
+        public AuthorsController(ILibraryRepository bookRepository)
         {
             _bookRepository = bookRepository;
         }
@@ -23,22 +23,11 @@ namespace PaceTime.API.Controllers
         [HttpGet]
         public IActionResult GetAuthors()
         {
-            var authorsFromRepo = GetAuthorsFromBooks();
+            var authorsFromRepo = _bookRepository.GetAuthors();
 
             var authors = Mapper.Map<IEnumerable<AuthorDto>>(authorsFromRepo);
 
             return new JsonResult(authors);
-        }
-
-        private IEnumerable<Domain.Models.Author> GetAuthorsFromBooks()
-        {
-            var booksFromRepo = _bookRepository.GetBooks();
-
-            foreach (var book in booksFromRepo)
-                _bookRepository.LoadRelatedEntities(book, nameof(book.Author));
-
-            var authors = booksFromRepo.Select(x => x.Author).Distinct();
-            return authors;
         }
     }
 }

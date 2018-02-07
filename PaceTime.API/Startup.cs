@@ -40,7 +40,7 @@ namespace PaceTime.API
             var connectionString = Configuration["ConnectionStrings:Development"];
             services.AddDbContext<KnowledgeContext>(x => x.UseSqlServer(connectionString));
 
-            services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<ILibraryRepository, LibraryRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

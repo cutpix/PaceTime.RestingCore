@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace PaceTime.Domain.Interfaces
 {
-    public interface IBookRepository
+    public interface ILibraryRepository
     {
+        IEnumerable<Author> GetAuthors();
         IEnumerable<Book> GetBooks();
-        void LoadRelatedEntities(Book currentEntity, string propertyName);
     }
 }

@@ -10,9 +10,9 @@ namespace PaceTime.API.Controllers
     [Route("api/books")]
     public class BooksController : Controller
     {
-        private readonly IBookRepository _booksRepository;
+        private readonly ILibraryRepository _booksRepository;
 
-        public BooksController(IBookRepository booksRepository)
+        public BooksController(ILibraryRepository booksRepository)
         {
             this._booksRepository = booksRepository;
         }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -9,9 +6,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using PaceTime.API.Helpers;
+using PaceTime.API.Models;
 using PaceTime.Data.Core;
 using PaceTime.Data.Core.Repositories;
 using PaceTime.Domain.Interfaces;
+using PaceTime.Domain.Models;
 
 namespace PaceTime.API
 {
@@ -59,12 +59,24 @@ namespace PaceTime.API
                 app.UseExceptionHandler("/error");
             }
 
+            ConfigureAutoMapper();
+
             app.UseStaticFiles();
 
             // This method need to be called after the initial migration is added and database updated.
             context.EnsureSeedData();
 
             app.UseMvc();
+        }
+
+        private void ConfigureAutoMapper()
+        {
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<Author, AuthorDto>()
+                   .ForMember(dest => dest.FullName, opt => opt.MapFrom(x => $"{x.FirstName} {x.LastName}"))
+                   .ForMember(dest => dest.Age, opt => opt.MapFrom(x => x.DateOfBirth.GetCurrentAge()));
+            });
         }
     }
 }

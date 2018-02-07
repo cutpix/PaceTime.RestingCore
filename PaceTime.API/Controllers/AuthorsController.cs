@@ -21,6 +21,9 @@ namespace PaceTime.API.Controllers
         [HttpGet]
         public IActionResult GetAuthors()
         {
+
+            throw new Exception("Random exception for testing purposes.");
+
             var authorsFromRepo = _bookRepository.GetAuthors();
 
             var authors = Mapper.Map<IEnumerable<AuthorDto>>(authorsFromRepo);

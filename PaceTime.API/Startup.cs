@@ -56,7 +56,14 @@ namespace PaceTime.API
             }
             else
             {
-                app.UseExceptionHandler("/error");
+                app.UseExceptionHandler(b =>
+                {
+                    b.Run(async ctx =>
+                    {
+                        ctx.Response.StatusCode = 500;
+                        await ctx.Response.WriteAsync("An unexpected fault happend. Try again later.");
+                    });
+                });
             }
 
             ConfigureAutoMapper();

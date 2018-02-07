@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{358A0292-31F7-40DD-833B-FB27E45941A3}"
 EndProject
@@ -11,13 +11,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{1B3B0D3D-2FDB-4CCB-8479-B49733FED35C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaceTime.Domain.Models", "PaceTime.Domain.Models\PaceTime.Domain.Models.csproj", "{634ECDA5-3ED4-4EF6-9FF4-2FC4CDF18810}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaceTime.Domain.Models", "PaceTime.Domain.Models\PaceTime.Domain.Models.csproj", "{634ECDA5-3ED4-4EF6-9FF4-2FC4CDF18810}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaceTime.API", "PaceTime.API\PaceTime.API.csproj", "{731FCC6D-902A-4F3E-9508-171FCB2E8504}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaceTime.API", "PaceTime.API\PaceTime.API.csproj", "{731FCC6D-902A-4F3E-9508-171FCB2E8504}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaceTime.Data.Core", "PaceTime.Data.Core\PaceTime.Data.Core.csproj", "{943988DB-1780-4DC9-98A4-6960A7795419}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaceTime.Data.Core", "PaceTime.Data.Core\PaceTime.Data.Core.csproj", "{943988DB-1780-4DC9-98A4-6960A7795419}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaceTime.Domain.Interfaces", "PaceTime.Domain.Interfaces\PaceTime.Domain.Interfaces.csproj", "{75E70051-C21B-48AC-829B-FAC3E562A4DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaceTime.Domain.Interfaces", "PaceTime.Domain.Interfaces\PaceTime.Domain.Interfaces.csproj", "{75E70051-C21B-48AC-829B-FAC3E562A4DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaceTime.API.Models", "PaceTime.API.Models\PaceTime.API.Models.csproj", "{63764C54-5842-4940-9343-F0853A9E5778}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{75E70051-C21B-48AC-829B-FAC3E562A4DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75E70051-C21B-48AC-829B-FAC3E562A4DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75E70051-C21B-48AC-829B-FAC3E562A4DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63764C54-5842-4940-9343-F0853A9E5778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63764C54-5842-4940-9343-F0853A9E5778}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63764C54-5842-4940-9343-F0853A9E5778}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63764C54-5842-4940-9343-F0853A9E5778}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +56,7 @@ Global
 		{731FCC6D-902A-4F3E-9508-171FCB2E8504} = {D242FA5A-09A6-4ABA-9BF0-15E4A1F1CD47}
 		{943988DB-1780-4DC9-98A4-6960A7795419} = {FF83C0DA-6D14-4794-BDCC-00B46B75FC6F}
 		{75E70051-C21B-48AC-829B-FAC3E562A4DD} = {358A0292-31F7-40DD-833B-FB27E45941A3}
+		{63764C54-5842-4940-9343-F0853A9E5778} = {D242FA5A-09A6-4ABA-9BF0-15E4A1F1CD47}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {17E5174A-ECA3-4040-B810-7AE48B623090}

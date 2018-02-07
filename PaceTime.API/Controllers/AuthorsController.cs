@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using PaceTime.API.Helpers;
 using PaceTime.API.Models;
 using PaceTime.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace PaceTime.API.Controllers
 {
@@ -26,8 +24,19 @@ namespace PaceTime.API.Controllers
             var authorsFromRepo = _bookRepository.GetAuthors();
 
             var authors = Mapper.Map<IEnumerable<AuthorDto>>(authorsFromRepo);
+            return Ok(authors);
+        }
 
-            return new JsonResult(authors);
+        [HttpGet("{id}")]
+        public IActionResult GetAuthor(Guid id)
+        {
+            var authorFromRepo = _bookRepository.GetAuthor(id);
+
+            if (authorFromRepo == null)
+                return NotFound();
+
+            var author = Mapper.Map<AuthorDto>(authorFromRepo);
+            return Ok(author);
         }
     }
 }

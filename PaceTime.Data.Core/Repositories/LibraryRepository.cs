@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PaceTime.Domain.Interfaces;
 using PaceTime.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,6 +16,11 @@ namespace PaceTime.Data.Core.Repositories
             this._context = context;
         }
 
+        public Author GetAuthor(Guid id)
+        {
+            return _context.Authors.FirstOrDefault(x => x.Id == id);
+        }
+
         public IEnumerable<Author> GetAuthors()
         {
             return _context.Authors
@@ -27,6 +33,11 @@ namespace PaceTime.Data.Core.Repositories
             return _context.Books
                            .OrderBy(b => b.Title)
                            .ThenBy(b => b.Author.FirstName);
+        }
+
+        public bool IsAuthorExists(Guid id)
+        {
+            return _context.Authors.Any(a => a.Id == id);
         }
     }
 }

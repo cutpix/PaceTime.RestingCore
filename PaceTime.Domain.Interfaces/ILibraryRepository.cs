@@ -8,5 +8,7 @@ namespace PaceTime.Domain.Interfaces
     {
         IEnumerable<Author> GetAuthors();
         IEnumerable<Book> GetBooks();
+        Author GetAuthor(Guid id);
+        bool IsAuthorExists(Guid id);
     }
 }

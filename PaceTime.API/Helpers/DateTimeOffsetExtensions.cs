@@ -10,7 +10,7 @@ namespace PaceTime.API.Helpers
         public static int GetCurrentAge(this DateTimeOffset dateTimeOffset)
         {
             var currentDate = DateTime.UtcNow;
-            var age = dateTimeOffset.Year - currentDate.Year;
+            var age = currentDate.Year - dateTimeOffset.Year;
 
             if (currentDate < dateTimeOffset.AddYears(age))
                 age--;

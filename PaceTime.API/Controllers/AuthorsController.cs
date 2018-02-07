@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using PaceTime.API.Helpers;
 using PaceTime.API.Models;
 using PaceTime.Domain.Interfaces;
@@ -22,22 +23,22 @@ namespace PaceTime.API.Controllers
         [HttpGet]
         public IActionResult GetAuthors()
         {
-            var authorsFromRepo = _bookRepository.GetBooks().Select(x => x.Author).Distinct();
+            var authorsFromRepo = UglyCodeForGettingAuthors();
 
-            var authorsDtoList = new List<AuthorDto>();
+            var authors = Mapper.Map<IEnumerable<AuthorDto>>(authorsFromRepo);
 
-            foreach (var author in authorsFromRepo)
-            {
-                authorsDtoList.Add(new AuthorDto
-                {
-                    Id = author.Id,
-                    FullName = $"{author.FirstName} {author.LastName}",
-                    Genre = author.Genre,
-                    Age = author.DateOfBirth.GetCurrentAge()
-                });
-            }
+            return new JsonResult(authors);
+        }
 
-            return new JsonResult(authorsDtoList);
+        private IEnumerable<Domain.Models.Author> UglyCodeForGettingAuthors()
+        {
+            var booksFromRepo = _bookRepository.GetBooks();
+
+            foreach (var book in booksFromRepo)
+                _bookRepository.LoadRelatedEntities(book, nameof(book.Author));
+
+            var authors = booksFromRepo.Select(x => x.Author).Distinct();
+            return authors;
         }
     }
 }

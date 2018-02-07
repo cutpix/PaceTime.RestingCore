@@ -1,4 +1,5 @@
-﻿using PaceTime.Domain.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using PaceTime.Domain.Interfaces;
 using PaceTime.Domain.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,11 @@ namespace PaceTime.Data.Core.Repositories
             return this._context.Books
                                 .OrderBy(b => b.Title)
                                 .ThenBy(b => b.Author.FirstName);
+        }
+
+        public void LoadRelatedEntities(Book currentEntity, string propertyName)
+        {
+            _context.Entry(currentEntity).Reference(propertyName).Load();
         }
     }
 }

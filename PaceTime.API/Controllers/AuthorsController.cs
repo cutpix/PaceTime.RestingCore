@@ -23,14 +23,14 @@ namespace PaceTime.API.Controllers
         [HttpGet]
         public IActionResult GetAuthors()
         {
-            var authorsFromRepo = UglyCodeForGettingAuthors();
+            var authorsFromRepo = GetAuthorsFromBooks();
 
             var authors = Mapper.Map<IEnumerable<AuthorDto>>(authorsFromRepo);
 
             return new JsonResult(authors);
         }
 
-        private IEnumerable<Domain.Models.Author> UglyCodeForGettingAuthors()
+        private IEnumerable<Domain.Models.Author> GetAuthorsFromBooks()
         {
             var booksFromRepo = _bookRepository.GetBooks();
 

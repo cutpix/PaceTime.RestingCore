@@ -28,9 +28,10 @@ namespace PaceTime.Data.Core.Repositories
                            .ThenBy(a => a.LastName);
         }
 
-        public IEnumerable<Book> GetBooks()
+        public IEnumerable<Book> GetBooks(Guid authorId)
         {
             return _context.Books
+                           .Where(b => b.AuthorId == authorId)
                            .OrderBy(b => b.Title)
                            .ThenBy(b => b.Author.FirstName);
         }

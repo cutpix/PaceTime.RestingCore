@@ -7,7 +7,7 @@ namespace PaceTime.Domain.Interfaces
     public interface ILibraryRepository
     {
         IEnumerable<Author> GetAuthors();
-        IEnumerable<Book> GetBooks();
+        IEnumerable<Book> GetBooks(Guid authorId);
         Author GetAuthor(Guid id);
         bool IsAuthorExists(Guid id);
     }

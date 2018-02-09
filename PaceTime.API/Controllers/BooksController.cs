@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using PaceTime.API.Models;
 using PaceTime.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -7,22 +9,26 @@ using System.Threading.Tasks;
 
 namespace PaceTime.API.Controllers
 {
-    [Route("api/books")]
+    [Route("api/authors/{authorId}/books")]
     public class BooksController : Controller
     {
-        private readonly ILibraryRepository _booksRepository;
+        private readonly ILibraryRepository _libraryRepository;
 
-        public BooksController(ILibraryRepository booksRepository)
+        public BooksController(ILibraryRepository libraryRepository)
         {
-            this._booksRepository = booksRepository;
+            _libraryRepository = libraryRepository;
         }
 
         [HttpGet]
-        public IActionResult GetBooks()
+        public IActionResult GetBooks(Guid authorId)
         {
-            var booksFromRepo = _booksRepository.GetBooks();
+            if (!_libraryRepository.IsAuthorExists(authorId))
+                return NotFound();
 
-            return new JsonResult(booksFromRepo);
+            var booksFromRepo = _libraryRepository.GetBooks(authorId);
+
+            var books = Mapper.Map<IEnumerable<BookDto>>(booksFromRepo);
+            return Ok(books);
         }
     }
 }

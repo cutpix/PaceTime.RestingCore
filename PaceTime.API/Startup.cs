@@ -83,6 +83,8 @@ namespace PaceTime.API
                 cfg.CreateMap<Author, AuthorDto>()
                    .ForMember(dest => dest.FullName, opt => opt.MapFrom(x => $"{x.FirstName} {x.LastName}"))
                    .ForMember(dest => dest.Age, opt => opt.MapFrom(x => x.DateOfBirth.GetCurrentAge()));
+
+                cfg.CreateMap<Book, BookDto>();
             });
         }
     }

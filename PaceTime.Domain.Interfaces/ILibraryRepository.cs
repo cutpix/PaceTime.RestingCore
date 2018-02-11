@@ -6,9 +6,11 @@ namespace PaceTime.Domain.Interfaces
 {
     public interface ILibraryRepository
     {
-        IEnumerable<Author> GetAuthors();
-        IEnumerable<Book> GetBooks(Guid authorId);
-        Author GetAuthor(Guid id);
         bool IsAuthorExists(Guid id);
+        Author GetAuthor(Guid id);
+        IEnumerable<Author> GetAuthors();
+        Book GetBookForAuthor(Guid authorId, Guid id);
+        IEnumerable<Book> GetBooksForAuthor(Guid authorId);
+        bool Save();
     }
 }

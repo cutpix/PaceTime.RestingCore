@@ -13,14 +13,27 @@ namespace PaceTime.Data.Core.Repositories
 
         public LibraryRepository(KnowledgeContext context)
         {
-            this._context = context;
+            _context = context;
+        }
+
+        public bool IsAuthorExists(Guid id)
+        {
+            return _context.Authors
+                           .Any(a => a.Id == id);
         }
 
         public Author GetAuthor(Guid id)
         {
-            return _context.Authors.FirstOrDefault(x => x.Id == id);
+            return _context.Authors
+                           .FirstOrDefault(x => x.Id == id);
         }
 
+        public Book GetBookForAuthor(Guid authorId, Guid id)
+        {
+            return _context.Books
+                           .Where(b => b.AuthorId == authorId && b.Id == id)
+                           .FirstOrDefault();
+        }
         public IEnumerable<Author> GetAuthors()
         {
             return _context.Authors
@@ -28,17 +41,17 @@ namespace PaceTime.Data.Core.Repositories
                            .ThenBy(a => a.LastName);
         }
 
-        public IEnumerable<Book> GetBooks(Guid authorId)
+        public IEnumerable<Book> GetBooksForAuthor(Guid authorId)
         {
             return _context.Books
                            .Where(b => b.AuthorId == authorId)
                            .OrderBy(b => b.Title)
-                           .ThenBy(b => b.Author.FirstName);
+                           .ToList();
         }
 
-        public bool IsAuthorExists(Guid id)
+        public bool Save()
         {
-            return _context.Authors.Any(a => a.Id == id);
+            return (_context.SaveChanges() >= 0);
         }
     }
 }

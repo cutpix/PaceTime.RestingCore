@@ -25,10 +25,25 @@ namespace PaceTime.API.Controllers
             if (!_libraryRepository.IsAuthorExists(authorId))
                 return NotFound();
 
-            var booksFromRepo = _libraryRepository.GetBooks(authorId);
+            var booksFromRepo = _libraryRepository.GetBooksForAuthor(authorId);
 
             var books = Mapper.Map<IEnumerable<BookDto>>(booksFromRepo);
             return Ok(books);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetBookForAuthor(Guid authorId, Guid id)
+        {
+            if (!_libraryRepository.IsAuthorExists(authorId))
+                return NotFound();
+
+            var bookForAuthorFromRepo = _libraryRepository.GetBookForAuthor(authorId, id);
+
+            if (bookForAuthorFromRepo == null)
+                return NotFound();
+
+            var bookForAuthor = Mapper.Map<BookDto>(bookForAuthorFromRepo);
+            return Ok(bookForAuthor);
         }
     }
 }

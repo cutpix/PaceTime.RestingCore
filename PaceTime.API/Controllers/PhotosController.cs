@@ -37,15 +37,15 @@ namespace PaceTime.API.Controllers
             if (!Uri.TryCreate(url, $"?access_token={token}", out url))
                 return NotFound();
 
-            var mediaFromInstagram = await GetRemoteDataAsync(url);
-            return Json(mediaFromInstagram);
+            var data = await GetRemoteDataAsync(url);
+            return Json(data);
         }
 
         #region Private Helpers
 
-        private static async Task<IEnumerable<InstagramMedia>> GetRemoteDataAsync(Uri url)
+        private static async Task<IEnumerable<InstagramMediaData>> GetRemoteDataAsync(Uri url)
         {
-            IEnumerable<InstagramMedia> data = null;
+            IEnumerable<InstagramMediaData> data = null;
 
             using (var client = new HttpClient())
             {
@@ -53,7 +53,7 @@ namespace PaceTime.API.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     var json = JObject.Parse(await response.Content.ReadAsStringAsync());
-                    data = json["data"].ToObject<IList<InstagramMedia>>();
+                    data = json["data"].ToObject<IList<InstagramMediaData>>();
                 }
             }
 

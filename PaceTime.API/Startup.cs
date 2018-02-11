@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -46,6 +47,7 @@ namespace PaceTime.API
             services.AddMvc(opt =>
             {
                 opt.ReturnHttpNotAcceptable = true;
+                opt.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter());
             })
             .AddRazorPagesOptions(opt =>
             {

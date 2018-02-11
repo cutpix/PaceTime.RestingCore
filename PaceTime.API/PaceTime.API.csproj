@@ -5,17 +5,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Constants\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNet.Security.OAuth.Instagram" Version="2.0.0-rc2-final" />
     <PackageReference Include="AutoMapper" Version="6.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PaceTime.API.Models\PaceTime.API.Models.csproj" />
     <ProjectReference Include="..\PaceTime.Data.Core\PaceTime.Data.Core.csproj" />
+    <ProjectReference Include="..\PaceTime.Data.Security\PaceTime.Data.Security.csproj" />
     <ProjectReference Include="..\PaceTime.Domain.Interfaces\PaceTime.Domain.Interfaces.csproj" />
     <ProjectReference Include="..\PaceTime.Domain.Models\PaceTime.Domain.Models.csproj" />
   </ItemGroup>

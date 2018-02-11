@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaceTime.Domain.Interfaces"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaceTime.API.Models", "PaceTime.API.Models\PaceTime.API.Models.csproj", "{63764C54-5842-4940-9343-F0853A9E5778}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaceTime.Data.Security", "PaceTime.Data.Security\PaceTime.Data.Security.csproj", "{B77925AB-DF58-4258-AC6D-4329698A6144}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{63764C54-5842-4940-9343-F0853A9E5778}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63764C54-5842-4940-9343-F0853A9E5778}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63764C54-5842-4940-9343-F0853A9E5778}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B77925AB-DF58-4258-AC6D-4329698A6144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B77925AB-DF58-4258-AC6D-4329698A6144}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B77925AB-DF58-4258-AC6D-4329698A6144}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B77925AB-DF58-4258-AC6D-4329698A6144}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{943988DB-1780-4DC9-98A4-6960A7795419} = {FF83C0DA-6D14-4794-BDCC-00B46B75FC6F}
 		{75E70051-C21B-48AC-829B-FAC3E562A4DD} = {358A0292-31F7-40DD-833B-FB27E45941A3}
 		{63764C54-5842-4940-9343-F0853A9E5778} = {D242FA5A-09A6-4ABA-9BF0-15E4A1F1CD47}
+		{B77925AB-DF58-4258-AC6D-4329698A6144} = {FF83C0DA-6D14-4794-BDCC-00B46B75FC6F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {17E5174A-ECA3-4040-B810-7AE48B623090}

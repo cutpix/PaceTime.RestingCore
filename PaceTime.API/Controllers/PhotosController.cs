@@ -37,10 +37,11 @@ namespace PaceTime.API.Controllers
             if (!Uri.TryCreate(url, $"?access_token={token}", out url))
                 return NotFound();
 
-            var data = await GetRemoteDataAsync(url);
-
-            return Json(data);
+            var mediaFromInstagram = await GetRemoteDataAsync(url);
+            return Json(mediaFromInstagram);
         }
+
+        #region Private Helpers
 
         private static async Task<IEnumerable<InstagramMedia>> GetRemoteDataAsync(Uri url)
         {
@@ -65,5 +66,7 @@ namespace PaceTime.API.Controllers
             var token = await _userManager.GetAuthenticationTokenAsync(user, provider, "access_token");
             return token;
         }
+
+        #endregion
     }
 }

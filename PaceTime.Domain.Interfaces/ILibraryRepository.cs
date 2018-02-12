@@ -13,5 +13,6 @@ namespace PaceTime.Domain.Interfaces
         IEnumerable<Book> GetBooksForAuthor(Guid authorId);
         void AddAuthor(Author author);
         bool Save();
+        void AddBookForAuthor(Guid authorId, Book bookEntity);
     }
 }

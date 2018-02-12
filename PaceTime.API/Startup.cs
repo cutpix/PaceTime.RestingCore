@@ -173,6 +173,8 @@ namespace PaceTime.API
                 cfg.CreateMap<Book, BookDto>();
 
                 cfg.CreateMap<AuthorForCreateDto, Author>();
+
+                cfg.CreateMap<BookForCreationDto, Book>();
             });
         }
     }

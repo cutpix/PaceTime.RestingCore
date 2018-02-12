@@ -13,6 +13,9 @@ namespace PaceTime.Data.Core.Configurations
         {
             builder.ToTable("book", "dbo")
                    .HasKey(x => x.Id);
+
+            builder.Property(x => x.Id)
+                   .ValueGeneratedOnAdd();
         }
     }
 }

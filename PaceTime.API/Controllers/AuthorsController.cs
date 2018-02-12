@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PaceTime.API.Models;
 using PaceTime.Domain.Interfaces;
+using PaceTime.Domain.Models;
 using System;
 using System.Collections.Generic;
 
@@ -27,7 +28,7 @@ namespace PaceTime.API.Controllers
             return Ok(authors);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetAuthor")]
         public IActionResult GetAuthor(Guid id)
         {
             var authorFromRepo = _libraryRepository.GetAuthor(id);
@@ -37,6 +38,25 @@ namespace PaceTime.API.Controllers
 
             var author = Mapper.Map<AuthorDto>(authorFromRepo);
             return Ok(author);
+        }
+
+        [HttpPost]
+        public IActionResult CreateAuthor([FromBody] AuthorForCreateDto author)
+        {
+            if (author == null)
+                return BadRequest();
+
+            var authorEntity = Mapper.Map<Author>(author);
+            _libraryRepository.AddAuthor(authorEntity);
+
+            if (!_libraryRepository.Save())
+                throw new Exception("Creating an author failed on save.");
+
+            var authorToReturn = Mapper.Map<AuthorDto>(authorEntity);
+
+            return CreatedAtRoute("GetAuthor",
+                new { id = authorToReturn.Id },
+                authorToReturn);
         }
     }
 }

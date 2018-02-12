@@ -53,5 +53,17 @@ namespace PaceTime.Data.Core.Repositories
         {
             return (_context.SaveChanges() >= 0);
         }
+
+        public void AddAuthor(Author author)
+        {
+            //author.Id = Guid.NewGuid();
+            _context.Authors.Add(author);
+
+            //if (author.Books.Any())
+            //{
+            //    foreach (var book in author.Books)
+            //        book.Id = Guid.NewGuid();
+            //}
+        }
     }
 }

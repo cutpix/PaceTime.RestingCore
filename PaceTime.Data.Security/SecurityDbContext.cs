@@ -8,6 +8,7 @@ namespace PaceTime.Data.Security
         public SecurityDbContext(DbContextOptions<SecurityDbContext> options)
             : base(options)
         {
+            Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

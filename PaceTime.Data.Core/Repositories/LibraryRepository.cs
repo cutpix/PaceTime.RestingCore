@@ -63,12 +63,16 @@ namespace PaceTime.Data.Core.Repositories
 
         public void AddAuthor(Author author)
         {
-            //author.Id = Guid.NewGuid();
             _context.Authors.Add(author);
+        }
 
-            //if (author.Books.Any())
-            //    foreach (var book in author.Books)
-            //        book.Id = Guid.NewGuid();
+        public IEnumerable<Author> GetAuthors(IEnumerable<Guid> authorIds)
+        {
+            return _context.Authors
+                           .Where(x => authorIds.Contains(x.Id))
+                           .OrderBy(x => x.FirstName)
+                           .OrderBy(x => x.LastName)
+                           .ToList();
         }
     }
 }

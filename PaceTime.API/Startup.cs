@@ -116,7 +116,7 @@ namespace PaceTime.API
 
             services.AddSwaggerGen(swg =>
             {
-                swg.SwaggerDoc("v1", new Info { Title = "PaceTine.API Swagger Document v1", Version = "v1" });
+                swg.SwaggerDoc("v1", new Info { Title = "PaceTime.API Swagger Document v1", Version = "v1" });
             });
         }
 

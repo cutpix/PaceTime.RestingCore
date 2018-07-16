@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using PaceTime.API.Models;
+using PaceTime.API.ViewModels;
 using PaceTime.Data.Security;
 
 namespace PaceTime.API.Controllers

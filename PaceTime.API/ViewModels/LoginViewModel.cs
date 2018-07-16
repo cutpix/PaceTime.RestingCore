@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PaceTime.API.Models
+namespace PaceTime.API.ViewModels
 {
     public class LoginViewModel
     {
